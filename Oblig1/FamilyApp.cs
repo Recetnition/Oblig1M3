@@ -49,18 +49,18 @@ namespace Oblig1
             var idSplit = command.Split(" ");
             var id = idSplit[1];
 
-            var thePerson = FindPerson(id);
+            var thePerson = GetPerson(id);
 
             if (thePerson == null) return "";
 
             var text = thePerson.GetDescription();
-            if (FindChildren(thePerson).Length == 0) return text;
+            if (GetChildren(thePerson).Length == 0) return text;
             text += "\n  Barn:\n";
-            text = FindChildren(thePerson).Aggregate(text, (current, child) => current + $"    {child.FirstName} (Id={child.Id}) Født: {child.BirthYear}\n");
+            text = GetChildren(thePerson).Aggregate(text, (current, child) => current + $"    {child.FirstName} (Id={child.Id}) Født: {child.BirthYear}\n");
             return text;
         }
 
-        private static Person FindPerson(string id)
+        private static Person GetPerson(string id)
         {
             Person thePerson = null;
             foreach (var person in People)
@@ -75,7 +75,7 @@ namespace Oblig1
         }
 
 
-        public static Person[] FindChildren(Person p)
+        public static Person[] GetChildren(Person p)
         {
             var children = new List<Person>();
             foreach (var person in People)

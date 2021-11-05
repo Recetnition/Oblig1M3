@@ -11,12 +11,6 @@ namespace ObligTests2
         }
 
         [Test]
-        public void Test1()
-        {
-            var p = new Person();
-            //Assert.Pass();
-        }
-        [Test]
         public void TestAllFields()
         {
             var p = new Person
@@ -49,19 +43,18 @@ namespace ObligTests2
             Assert.AreEqual(expectedDescription, actualDescription);
         }
         [Test]
-        
         public void TestSomeFields()
         {
             var p = new Person
             {
                 Id = 1,
-                FirstName = "Daniel",
-                LastName = "Antonsen",
+                FirstName = "Jostein",
+                LastName = "MVP",
                 BirthYear = 1993,
             };
 
             var actualDescription = p.GetDescription();
-            var expectedDescription = "Daniel Antonsen (Id=1) Født: 1993";
+            var expectedDescription = "Jostein MVP (Id=1) Født: 1993";
 
             Assert.AreEqual(expectedDescription, actualDescription);
         }
